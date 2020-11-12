@@ -21,7 +21,7 @@ class WebServiceHelper: NSObject {
             }
             return
         }
-        if let url = URL(string: BASE_URL) {
+        if let url = URL(string: request.url) {
             if let request = try? URLRequest(url: url, method: .get) {
                 let task = URLSession(configuration: .default).dataTask(with: request) { ( data, response , error) in
                     do {

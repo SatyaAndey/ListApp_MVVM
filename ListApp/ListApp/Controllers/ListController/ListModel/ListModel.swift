@@ -15,6 +15,7 @@ enum List
     {
         struct Request: Encodable
         {
+            var url: String
         }
         struct Response: Codable
         {

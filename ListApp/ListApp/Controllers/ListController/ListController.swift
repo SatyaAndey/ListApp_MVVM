@@ -26,15 +26,15 @@ class ListController: UIViewController {
     {
         super.init(coder: aDecoder)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         Utility.sharedInstance.indicatorStartAnimating()
         fetchListItems()
         NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
-
+        
     }
     
     func fetchListItems() {
@@ -48,7 +48,7 @@ class ListController: UIViewController {
                 } else {
                     self?.lblNodataRepresentation.isHidden = self?.listViewModel.viewModel.count != 0
                     self?.lblNodataRepresentation.text = response?.errorMessage ?? NO_DATA_TEXT
-
+                    
                     self?.dataSource.listItems = self?.listViewModel.viewModel ?? [List.APIList.ViewModel]()
                 }
                 self?.navigationItem.title = response?.title ?? NO_DATA_UNKNOWN
@@ -56,7 +56,7 @@ class ListController: UIViewController {
             }
         }
     }
-
+    
 }
 
 
@@ -88,7 +88,7 @@ extension ListController {
         
         //adding no data label
         configureNodatalabeUI()
-
+        
         
         //registering tablecell
         listView.register(ListTableViewCell.classForCoder(), forCellReuseIdentifier: "ListTableViewCell")

@@ -11,6 +11,12 @@
 		5249C62D255D161300487253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5249C62C255D161300487253 /* Assets.xcassets */; };
 		5249C630255D161300487253 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5249C62E255D161300487253 /* LaunchScreen.storyboard */; };
 		5249C63B255D161300487253 /* ListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249C63A255D161300487253 /* ListAppTests.swift */; };
+		5249C648255D195B00487253 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249C647255D195B00487253 /* ListController.swift */; };
+		5249C651255D1AD500487253 /* Constatnts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249C650255D1AD500487253 /* Constatnts.swift */; };
+		5249C658255D1DE700487253 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249C654255D1DE700487253 /* ListModel.swift */; };
+		5249C659255D1DE700487253 /* ListControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249C656255D1DE700487253 /* ListControllerViewModel.swift */; };
+		5249C65A255D1DE700487253 /* ListControllerTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249C657255D1DE700487253 /* ListControllerTableViewDataSource.swift */; };
+		5249C65C255D1E0100487253 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5249C65B255D1E0100487253 /* ListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +38,12 @@
 		5249C636255D161300487253 /* ListAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ListAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5249C63A255D161300487253 /* ListAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAppTests.swift; sourceTree = "<group>"; };
 		5249C63C255D161300487253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5249C647255D195B00487253 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		5249C650255D1AD500487253 /* Constatnts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constatnts.swift; sourceTree = "<group>"; };
+		5249C654255D1DE700487253 /* ListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
+		5249C656255D1DE700487253 /* ListControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListControllerViewModel.swift; sourceTree = "<group>"; };
+		5249C657255D1DE700487253 /* ListControllerTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListControllerTableViewDataSource.swift; sourceTree = "<group>"; };
+		5249C65B255D1E0100487253 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				5249C623255D160C00487253 /* AppDelegate.swift */,
+				5249C645255D191500487253 /* Controllers */,
+				5249C64F255D1AAD00487253 /* HelperClasses */,
 				5249C62C255D161300487253 /* Assets.xcassets */,
 				5249C62E255D161300487253 /* LaunchScreen.storyboard */,
 				5249C631255D161300487253 /* Info.plist */,
@@ -88,6 +102,58 @@
 				5249C63C255D161300487253 /* Info.plist */,
 			);
 			path = ListAppTests;
+			sourceTree = "<group>";
+		};
+		5249C645255D191500487253 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5249C646255D192F00487253 /* ListController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5249C646255D192F00487253 /* ListController */ = {
+			isa = PBXGroup;
+			children = (
+				5249C652255D1DE700487253 /* ListCell */,
+				5249C653255D1DE700487253 /* ListModel */,
+				5249C655255D1DE700487253 /* ListViewModel */,
+				5249C647255D195B00487253 /* ListController.swift */,
+			);
+			path = ListController;
+			sourceTree = "<group>";
+		};
+		5249C64F255D1AAD00487253 /* HelperClasses */ = {
+			isa = PBXGroup;
+			children = (
+				5249C650255D1AD500487253 /* Constatnts.swift */,
+			);
+			path = HelperClasses;
+			sourceTree = "<group>";
+		};
+		5249C652255D1DE700487253 /* ListCell */ = {
+			isa = PBXGroup;
+			children = (
+				5249C65B255D1E0100487253 /* ListTableViewCell.swift */,
+			);
+			path = ListCell;
+			sourceTree = "<group>";
+		};
+		5249C653255D1DE700487253 /* ListModel */ = {
+			isa = PBXGroup;
+			children = (
+				5249C654255D1DE700487253 /* ListModel.swift */,
+			);
+			path = ListModel;
+			sourceTree = "<group>";
+		};
+		5249C655255D1DE700487253 /* ListViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5249C656255D1DE700487253 /* ListControllerViewModel.swift */,
+				5249C657255D1DE700487253 /* ListControllerTableViewDataSource.swift */,
+			);
+			path = ListViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,7 +256,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5249C65C255D1E0100487253 /* ListTableViewCell.swift in Sources */,
 				5249C624255D160C00487253 /* AppDelegate.swift in Sources */,
+				5249C651255D1AD500487253 /* Constatnts.swift in Sources */,
+				5249C65A255D1DE700487253 /* ListControllerTableViewDataSource.swift in Sources */,
+				5249C659255D1DE700487253 /* ListControllerViewModel.swift in Sources */,
+				5249C648255D195B00487253 /* ListController.swift in Sources */,
+				5249C658255D1DE700487253 /* ListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,13 +416,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ListApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = satya.com.ListApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -361,13 +434,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ListApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = satya.com.ListApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -387,7 +461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = satya.com.ListAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ListApp.app/ListApp";
 			};
@@ -408,7 +482,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = satya.com.ListAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ListApp.app/ListApp";
 			};

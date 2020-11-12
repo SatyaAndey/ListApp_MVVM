@@ -38,7 +38,7 @@ class ListController: UIViewController {
     }
     
     func fetchListItems() {
-        listViewModel.fetchApiItmsList(List.APIList.Request()) { [weak self]( response) in
+        listViewModel.fetchApiItmsList(List.APIList.Request(url: BASE_URL)) { [weak self]( response) in
             DispatchQueue.main.async {
                 self?.refreshControl.endRefreshing()
                 if response?.success == 0 {

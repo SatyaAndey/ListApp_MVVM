@@ -9,8 +9,8 @@
 import UIKit
 
 class WebServiceHelper: NSObject {
-  static var sharedInstance = WebServiceHelper()
-
+    static var sharedInstance = WebServiceHelper()
+    
     func fetchListViewItems(_ request: List.APIList.Request, completionhandler: @escaping(_ response: List.APIList.Response?) -> Void) {
         if !Utility.sharedInstance.isNetworkReachable {
             completionhandler(List.APIList.Response(errorMessage: NO_NETWORK_LABEL_MESSAGE, success: 0, title: ERROR_TITLE_NO_NETWORK, rows: [List.APIList.ViewModel]()))

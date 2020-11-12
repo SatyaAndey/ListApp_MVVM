@@ -18,8 +18,9 @@ enum List
         }
         struct Response: Codable
         {
+            var errorMessage : String?
+            var success: Int?
             var title: String?
-            
             var rows: [ViewModel]?
         }
         struct ViewModel: Codable

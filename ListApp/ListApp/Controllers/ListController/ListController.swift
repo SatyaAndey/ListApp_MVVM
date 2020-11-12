@@ -15,7 +15,7 @@ class ListController: UIViewController {
     var refreshControl = UIRefreshControl()
     var arrListItems = [List.APIList.ViewModel]()
     var dataSource = ListControllerTableViewDataSource()
-    var ListViewModel = ListControllerViewModel()
+    var listViewModel = ListControllerViewModel()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -31,6 +31,30 @@ class ListController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        Utility.sharedInstance.indicatorStartAnimating()
+        fetchListItems()
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
+
+    }
+    
+    func fetchListItems() {
+        listViewModel.fetchApiItmsList(List.APIList.Request()) { [weak self]( response) in
+            DispatchQueue.main.async {
+                self?.refreshControl.endRefreshing()
+                if response?.success == 0 {
+                    self?.lblNodataRepresentation.isHidden = false
+                    self?.lblNodataRepresentation.text = response?.errorMessage ?? NO_DATA_TEXT
+                    self?.dataSource.listItems = [List.APIList.ViewModel]()
+                } else {
+                    self?.lblNodataRepresentation.isHidden = self?.listViewModel.viewModel.count != 0
+                    self?.lblNodataRepresentation.text = response?.errorMessage ?? NO_DATA_TEXT
+
+                    self?.dataSource.listItems = self?.listViewModel.viewModel ?? [List.APIList.ViewModel]()
+                }
+                self?.navigationItem.title = response?.title ?? NO_DATA_UNKNOWN
+                self?.listView.reloadData()
+            }
+        }
     }
 
 }
@@ -62,12 +86,16 @@ extension ListController {
         //addRefreshControl to listview
         addRefreshControlToListView()
         
+        //adding no data label
+        configureNodatalabeUI()
+
+        
         //registering tablecell
         listView.register(ListTableViewCell.classForCoder(), forCellReuseIdentifier: "ListTableViewCell")
-        configureNodatalabeUI()
         
     }
     
+    //configure NodatalabeUI
     func configureNodatalabeUI() {
         lblNodataRepresentation = UILabel(frame: CGRect.zero)
         lblNodataRepresentation.numberOfLines = 0
@@ -96,6 +124,13 @@ extension ListController {
     
     // fetching api items on listview refresh
     @objc func refreshListView() {
-        refreshControl.endRefreshing()
+        self.fetchListItems()
+    }
+}
+
+// MARK: Orientation observer
+extension ListController {
+    @objc func orientationChanged() {
+        self.listView.reloadData()
     }
 }

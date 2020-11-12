@@ -27,7 +27,7 @@ class ListTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-                super.init(coder: coder)
+            super.init(coder: coder)
 
     }
     
@@ -118,7 +118,7 @@ class ListTableViewCell: UITableViewCell {
             
         }
         
-        // Description label cUI configuration
+        // Description label UI configuration
         
         func configureDescriptionLabelUI() {
             lblDescription.textColor = UIColor.black

@@ -16,3 +16,7 @@ let FONT_SIZE_TITLE_LABEL = 15 / 320 * MAX_WIDTH
 let FONT_SIZE_DESCRIPTION_LABEL = 13 / 320 * MAX_WIDTH
 let NO_DATA_TEXT = "Something went wrong, drag down to refresh!"
 let NO_NETWORK_MESSAGE = "You are showing offline, please check your network!"
+let NO_NETWORK_LABEL_MESSAGE = "You are showing offline, drag down to refresh!"
+let ERROR_TITLE_NO_NETWORK = "You are showing offline"
+let NO_DATA_UNKNOWN = "Something went wrong!"
+let NO_RECORDS_FOUND = "No records found, drag down to refresh!"

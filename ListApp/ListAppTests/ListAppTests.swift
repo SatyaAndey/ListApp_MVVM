@@ -15,17 +15,17 @@ class ListAppTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         sut = ListController()
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         sut = nil
     }
-
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
@@ -52,9 +52,9 @@ class ListAppTests: XCTestCase {
             } else {
                 XCTFail("Error: \(response?.errorMessage ?? "")")
             }
-
+            
         }
-        wait(for: [promise], timeout: 10)
+        wait(for: [promise], timeout: 5)
     }
     
     
@@ -69,9 +69,72 @@ class ListAppTests: XCTestCase {
         
         //Then
         XCTAssertEqual(isReachable, true, NO_NETWORK_MESSAGE)
-
+        
     }
     
-
+    
+    
+    // Test case for loading modle from local json file.
+    
+    func testLoadModelFromLocalData() {
+        // Given
+        var dataModel = List.APIList.Response()
+        if let jsonPath = Bundle(for: self.classForCoder).path(forResource: "facts", ofType: "json") {
+            if let data = NSData(contentsOfFile: jsonPath) {
+                do {
+                    if let stringResponse =  String(data: data as Data, encoding: .ascii)  {
+                        if let dataLocal = stringResponse.data(using: .utf8) {
+                            dataModel =  try JSONDecoder().decode( List.APIList.Response.self, from: dataLocal as Data)
+                        }
+                    }
+                    
+                } catch _ {
+                    
+                }
+            }
+        }
+        
+        // When
+        
+        let records = dataModel.rows
+        
+        // Then
+        XCTAssertEqual(records?.count ?? 0, 14, "There is a issue while mapping data to given model")
+    }
+    
+    
+    // Test case for test ListControllerViewModel and ListControllerTablevieDataSource with local json data.
+    
+    func testViewModelAndTableviewDataSource() {
+        // Given
+        var dataModel = List.APIList.Response()
+        if let jsonPath = Bundle(for: self.classForCoder).path(forResource: "facts", ofType: "json") {
+            if let data = NSData(contentsOfFile: jsonPath) {
+                do {
+                    if let stringResponse =  String(data: data as Data, encoding: .ascii)  {
+                        if let dataLocal = stringResponse.data(using: .utf8) {
+                            dataModel =  try JSONDecoder().decode( List.APIList.Response.self, from: dataLocal as Data)
+                        }
+                    }
+                    
+                } catch _ {
+                    
+                }
+            }
+        }
+        
+        
+        //When
+        let viewModel = ListControllerViewModel()
+        viewModel.viewModel = dataModel.rows ?? [List.APIList.ViewModel]()
+        
+        // then
+        let dataSource = ListControllerTableViewDataSource()
+        dataSource.listItems = viewModel.viewModel
+        let tableView = UITableView()
+        tableView.dataSource = dataSource
+        XCTAssert(tableView.numberOfRows(inSection: 0) > 0, "There are no cells in Tableview")
+    }
+    
     
 }
